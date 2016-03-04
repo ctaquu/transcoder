@@ -37,6 +37,10 @@ class IconvTranscoder implements TranscoderInterface
 
         // set fixed value for german special characters and symbols
         $to = 'UTF-8//IGNORE';
+
+        if('auto' === $from) {
+            $from = 'UTF-8';
+        }
         
         $result = iconv($from, $to ?: $this->defaultEncoding, $string);
         restore_error_handler();
